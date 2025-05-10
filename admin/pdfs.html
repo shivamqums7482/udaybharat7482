@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Management - Uday Bharat Magazine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-page">
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>उदय भारत</h2>
+                <p>Admin Panel</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="articles.html"><i class="fas fa-newspaper"></i> Articles</a>
+                    </li>
+                    <li>
+                        <a href="categories.html"><i class="fas fa-tags"></i> Categories</a>
+                    </li>
+                    <li>
+                        <a href="images.html"><i class="fas fa-images"></i> Images</a>
+                    </li>
+                    <li class="active">
+                        <a href="pdfs.html"><i class="fas fa-file-pdf"></i> PDF Files</a>
+                    </li>
+                    <li>
+                        <a href="users.html"><i class="fas fa-users"></i> Users</a>
+                    </li>
+                    <li>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="../index.html" target="_blank"><i class="fas fa-external-link-alt"></i> View Site</a>
+                <a href="index.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-left">
+                    <button class="toggle-sidebar"><i class="fas fa-bars"></i></button>
+                    <h1>PDF Management</h1>
+                </div>
+                <div class="header-right">
+                    <div class="admin-profile">
+                        <img src="/placeholder.svg?height=40&width=40" alt="Admin" class="profile-img">
+                        <span>Admin User</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-actions">
+                <button class="btn-primary" id="uploadPdfBtn"><i class="fas fa-upload"></i> Upload PDF</button>
+                <div class="search-filter">
+                    <input type="text" placeholder="Search PDFs...">
+                    <select>
+                        <option value="">All Types</option>
+                        <option value="magazine">Magazine</option>
+                        <option value="report">Report</option>
+                        <option value="newsletter">Newsletter</option>
+                        <option value="ebook">E-Book</option>
+                    </select>
+                    <button class="btn-filter"><i class="fas fa-filter"></i> Filter</button>
+                </div>
+            </div>
+
+            <!-- Upload Modal -->
+            <div class="modal" id="uploadPdfModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Upload PDF</h2>
+                        <button class="close-modal"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="upload-area" id="pdfUploadArea">
+                            <div class="upload-instructions">
+                                <i class="fas fa-file-pdf"></i>
+                                <h3>Drag & Drop PDF Here</h3>
+                                <p>or</p>
+                                <label for="pdfFileInput" class="btn-secondary">Browse Files</label>
+                                <input type="file" id="pdfFileInput" accept="application/pdf" style="display: none;">
+                            </div>
+                            <div class="upload-preview" id="pdfUploadPreview"></div>
+                        </div>
+                        <div class="upload-options">
+                            <div class="form-group">
+                                <label for="pdfTitle">Title</label>
+                                <input type="text" id="pdfTitle" placeholder="Enter PDF title">
+                            </div>
+                            <div class="form-group">
+                                <label for="pdfType">Type</label>
+                                <select id="pdfType">
+                                    <option value="">Select Type</option>
+                                    <option value="magazine">Magazine</option>
+                                    <option value="report">Report</option>
+                                    <option value="newsletter">Newsletter</option>
+                                    <option value="ebook">E-Book</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="pdfDescription">Description</label>
+                                <textarea id="pdfDescription" placeholder="Enter a brief description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="pdfAccess">Access Level</label>
+                                <select id="pdfAccess">
+                                    <option value="public">Public (Free)</option>
+                                    <option value="subscriber">Subscribers Only</option>
+                                    <option value="premium">Premium Members</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn-secondary" id="cancelPdfUpload">Cancel</button>
+                        <button class="btn-primary" id="confirmPdfUpload">Upload PDF</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdf-library">
+                <div class="pdf-grid">
+                    <!-- PDF Items -->
+                    <div class="pdf-item">
+                        <div class="pdf-preview">
+                            <i class="fas fa-file-pdf"></i>
+                            <div class="pdf-actions">
+                                <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                <button class="btn-icon" title="Download"><i class="fas fa-download"></i></button>
+                                <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="pdf-info">
+                            <h4>Uday Bharat Magazine - May 2025</h4>
+                            <p>Type: Magazine</p>
+                            <p>Size: 12.5 MB</p>
+                            <p class="pdf-date">Uploaded: May 1, 2025</p>
+                            <div class="pdf-stats">
+                                <span><i class="fas fa-download"></i> 245</span>
+                                <span><i class="fas fa-eye"></i> 1,256</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pdf-item">
+                        <div class="pdf-preview">
+                            <i class="fas fa-file-pdf"></i>
+                            <div class="pdf-actions">
+                                <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                <button class="btn-icon" title="Download"><i class="fas fa-download"></i></button>
+                                <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="pdf-info">
+                            <h4>Economic Report 2025</h4>
+                            <p>Type: Report</p>
+                            <p>Size: 8.2 MB</p>
+                            <p class="pdf-date">Uploaded: April 28, 2025</p>
+                            <div class="pdf-stats">
+                                <span><i class="fas fa-download"></i> 187</span>
+                                <span><i class="fas fa-eye"></i> 932</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pdf-item">
+                        <div class="pdf-preview">
+                            <i class="fas fa-file-pdf"></i>
+                            <div class="pdf-actions">
+                                <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                <button class="btn-icon" title="Download"><i class="fas fa-download"></i></button>
+                                <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="pdf-info">
+                            <h4>Weekly Newsletter - April Week 4</h4>
+                            <p>Type: Newsletter</p>
+                            <p>Size: 3.5 MB</p>
+                            <p class="pdf-date">Uploaded: April 25, 2025</p>
+                            <div class="pdf-stats">
+                                <span><i class="fas fa-download"></i> 124</span>
+                                <span><i class="fas fa-eye"></i> 756</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pdf-item">
+                        <div class="pdf-preview">
+                            <i class="fas fa-file-pdf"></i>
+                            <div class="pdf-actions">
+                                <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                <button class="btn-icon" title="Download"><i class="fas fa-download"></i></button>
+                                <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="pdf-info">
+                            <h4>Guide to Indian Politics</h4>
+                            <p>Type: E-Book</p>
+                            <p>Size: 15.8 MB</p>
+                            <p class="pdf-date">Uploaded: April 20, 2025</p>
+                            <div class="pdf-stats">
+                                <span><i class="fas fa-download"></i> 312</span>
+                                <span><i class="fas fa-eye"></i> 1,845</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pagination">
+                    <button class="btn-page"><i class="fas fa-chevron-left"></i></button>
+                    <button class="btn-page active">1</button>
+                    <button class="btn-page">2</button>
+                    <button class="btn-page">3</button>
+                    <span>...</span>
+                    <button class="btn-page">5</button>
+                    <button class="btn-page"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

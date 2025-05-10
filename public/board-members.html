@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board Members - Uday Bharat Magazine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles specific to Board Members page */
+        .page-header {
+            background-color: #f9f9f9;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
+            font-size: 36px;
+            color: #FF9933;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            font-size: 18px;
+        }
+        
+        .board-intro {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+            line-height: 1.8;
+        }
+        
+        .board-section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            display: inline-block;
+            font-size: 28px;
+            color: #138808;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #FF9933;
+        }
+        
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        /* Center grid for sections with fewer items */
+        .center-few-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .board-member {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .board-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member-photo {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .board-member:hover .member-photo img {
+            transform: scale(1.05);
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .member-role {
+            color: #FF9933;
+            font-weight: 500;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .member-bio {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .member-social {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .member-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .member-social a:hover {
+            background-color: #FF9933;
+            color: #fff;
+        }
+        
+        .advisory-board {
+            margin-top: 60px;
+        }
+        
+        .advisory-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .advisory-member {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .advisory-member .member-name {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .advisory-member .member-role {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .advisory-member .member-affiliation {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .join-board {
+            background-color: #f9f9f9;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .join-board h3 {
+            font-size: 24px;
+            color: #138808;
+            margin-bottom: 20px;
+        }
+        
+        .join-board p {
+            max-width: 700px;
+            margin: 0 auto 25px;
+            line-height: 1.8;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background-color: #FF9933;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e88a2a;
+        }
+        
+        @media (max-width: 768px) {
+            .board-grid, .center-few-items {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .advisory-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .join-board {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <span><i class="fas fa-calendar-alt"></i> Monday, May 4, 2025</span>
+                <span><i class="fas fa-map-marker-alt"></i> New Delhi, India</span>
+            </div>
+            <div class="top-right">
+                <a href="https://www.facebook.com/groups/1372117022978461"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/ecofast_agrisolution?igsh=cHJ0OTZsYjI3M3Q5"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/uday-bharat/"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>UDAY BHARAT</h1>
+                <p>E-Magazine</p>
+            </div>
+            <div class="ad-space">
+                <div class="ad-placeholder">Advertisement Space</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about-us.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="current-issues.html"><i class="fas fa-newspaper"></i> Current Issues</a></li>
+                <li><a href="archives.html"><i class="fas fa-archive"></i> Archives</a></li>
+                <li><a href="submission-guidelines.html"><i class="fas fa-file-alt"></i> Submission Guidelines</a></li>
+                <li><a href="board-members.html" class="active"><i class="fas fa-users"></i> Board Members</a></li>
+                <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            </ul>
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Form -->
+    <div class="search-form">
+        <div class="container">
+            <form>
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="container">
+                <h1>Board Members</h1>
+                <p>Meet the dedicated team of professionals who guide Uday Bharat Magazine's editorial vision and strategic direction.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Board Introduction -->
+            <div class="board-intro">
+                <p>Our editorial board and leadership team bring together decades of experience in journalism, academia, policy research, and media management. Their diverse expertise and shared commitment to quality journalism ensure that Uday Bharat Magazine maintains the highest standards of reporting and analysis.</p>
+            </div>
+
+            <!-- Leadership Team Section -->
+            <div class="board-section">
+                <div class="section-title">
+                    <h2>Editor-in-Chief</h2>
+                </div>
+                <div class="center-few-items">
+                    <!-- Editor-in-Chief -->
+                    <div class="board-member">
+                        <div class="member-photo">
+                            <img src="img/ed1.jpg" alt="Rajesh Sharma">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Dr. Suresh Kaushik</h3>
+                            <div class="member-role">Editor-in-Chief</div>
+                            <p class="member-bio">Editor, Uday Bharat Magazine and Former CTO, Division of Soil and Science and Agricultural Chemistry, ICAR-IARI, Pusa Campus, New Delhi - 110012</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Managing Editor -->
+                    <div class="board-member">
+                        <div class="member-photo">
+                            <img src="img/ozair.jpg" alt="Priya Desai">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Mr. Ozair Alam</h3>
+                            <div class="member-role">Research Development Head, Eco Fast Agri Solution Private Limited</div>
+                            <p class="member-bio">
+                                Ozair Alam
+                                Designation : Research Development Head,
+                                Eco Fast Agri Solution Private Limited
+                                Editor Uday Bharat Magazine, specializing in sustainable agriculture, training coordination, and plant protection (Plant Pathology, Nematology and Entomology). <br> Phone: +91 8958123233</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Board of Directors Section (New) -->
+            <div class="board-section">
+                <div class="section-title">
+                    <h2>Board of Directors</h2>
+                </div>
+                <div class="center-few-items">
+                    <!-- Director 1 -->
+                    <div class="board-member">
+                        <div class="member-photo">
+                            <img src="img/bod1.jpg" alt="Director 1">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Mr. Shivendra Pratap Rathore</h3>
+                            <div class="member-role">Board of Director</div>
+                            <p class="member-bio">With over 15 years of experience in agricultural policy and strategic planning, Dr. Kumar brings valuable insights to the direction and growth of Uday Bharat Magazine.</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Director 2 -->
+                    <div class="board-member">
+                        <div class="member-photo">
+                            <img src="img/bod2.jpg" alt="Director 2">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Mr. Bharat Balyan</h3>
+                            <div class="member-role">Board of Director</div>
+                            <p class="member-bio">Dr. Sharma oversees content strategy and development, ensuring that Uday Bharat Magazine maintains its high standards of quality and relevance in agricultural journalism.</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Editorial Board Section -->
+            <div class="board-section">
+                <div class="section-title">
+                    <h2>Editorial Board</h2>
+                </div>
+                <div class="board-grid">
+                    <!-- Politics Editor -->
+                    <div class="board-member">
+                        <div class="member-photo">
+                            <img src="img/pallavi.jpg" alt="Arun Jaitley">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Dr. Pallvai Bhatt</h3>
+                            <div class="member-role">Assistant Professor School of Agriculture, Graphic Era Hill University, Dehradun</div>
+                            <p class="member-bio">Editor of Uday Bharat Magazine, specializing in sustainable agriculture, teaching and agricultural practices specialising</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Politics Editor -->
+                    <div class="board-member">
+                        <div class="member-photo">
+                            <img src="img/sneha2.jpg" alt="Arun Jaitley">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Dr. Sneha Dohare</h3>
+                            <div class="member-role">Asst. Professor College of Agribusiness Management, G.B.Pant University of Agriculture and Technology, Pantnagar - 263145</div>
+                            <p class="member-bio">Editor of Uday Bharat Magazine, Advisory member of Eco Fast Agri Solution Private Limited, Assistant Professor, GB Pant University.</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Economy Editor -->
+                    <div class="board-member">
+                        <div class="member-photo">
+                            <img src="img/ramprakash.jpg" alt="Meera Iyer">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Dr. Ramprakash Srivastava</h3>
+                            <div class="member-role">Associate Professor, Faculty of Agriculture Mandsaur University, Mandsaur(MP)</div>
+                            <p class="member-bio">Editor of Uday Bharat Magazine, specializing in Biotechnology, Genetics and Gene sequencing.</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Culture Editor -->
+                    <div class="board-member">
+                        <div class="member-photo">
+                            <img src="img/pooja.jpg" alt="Sanjay Patel">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Dr. Pooja Goswami</h3>
+                            <div class="member-role">Assisant Professor, JNKVV Jabalpur M.P.</div>
+                            <p class="member-bio"></p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technology Editor -->
+                    <div class="board-member">
+                        <div class="member-photo">
+                            <img src="img/shyam.jpg" alt="Neha Gupta">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Shyam Kumar</h3>
+                            <div class="member-role">Scientist KVK Seohar</div>
+                            <p class="member-bio">Ex Domain Expert at Secretariat, Government of Bihar (Planning Department), Ex-CEO of Fishfloc Company (Fisheries).</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- International Affairs Editor -->
+                    <div class="board-member">
+                        <div class="member-photo">
+                            <img src="img/dhiraj1.jpg" alt="Rahul Khanna">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Dr. Dhiraj Kumar</h3>
+                            <div class="member-role">Scientist (Soil Science), ICAR, Indian Institute of Soil Science, Bhopal</div>
+                            <p class="member-bio"></p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Photo Editor -->
+                    <div class="board-member">
+                        <div class="member-photo">
+                            <img src="img/shraddha1.jpg" alt="Ananya Sen">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Dr. Shraddha Karcho</h3>
+                            <div class="member-role">Assistant Professor at Raja Bhoj College of Agriculture Balaghat</div>
+                            <p class="member-bio"></p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- International Affairs Editor -->
+                    <div class="board-member">
+                        <div class="member-photo">
+                            <img src="img/murug.jpg" alt="Rahul Khanna">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Dr. N. Murugalatha</h3>
+                            <div class="member-role">Professor & Head of Department (Paramedical Sciences), Specialization in Micro-Biology.</div>
+                            <p class="member-bio"></p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- International Affairs Editor -->
+                    <div class="board-member">
+                        <div class="member-photo">
+                            <img src="img/sapna.jpg" alt="Rahul Khanna">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Dr. Sapna Langyan</h3>
+                            <div class="member-role">Scientist at ICAR, NBPGR (New Delhi)</div>
+                            <p class="member-bio"></p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- International Affairs Editor -->
+                    <div class="board-member">
+                        <div class="member-photo">
+                            <img src="img/vinod1.jpg" alt="Rahul Khanna">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Dr. Vinod Ramesh Bharti</h3>
+                            <div class="member-role">Assistant Professor Agricultural Sciences G.H. Raisoni University</div>
+                            <p class="member-bio"></p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- International Affairs Editor -->
+                    <div class="board-member">
+                        <div class="member-photo">
+                            <img src="img/avinash.jpg" alt="Rahul Khanna">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Dr. Avinash Varma</h3>
+                            <div class="member-role">Associate Professor, Department of Agricultural Studies, Quantum University, Roorkee (Uttarakhand)</div>
+                            <p class="member-bio"></p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advisory Board Section -->
+            <div class="board-section advisory-board">
+                <div class="section-title">
+                    <h2>Advisory Board</h2>
+                </div>
+                <div class="advisory-list">
+                    <div class="advisory-member">
+                        <h3 class="member-name">Dr. S.S Sindhu</h3>
+                        <div class="member-role">Emeritus Scientist, ICAR-IARI, New Delhi</div>
+                        <!-- <p class="member-affiliation">Professor of Economics, Delhi School of Economics</p> -->
+                    </div>
+                    <div class="advisory-member">
+                        <h3 class="member-name">Dr. R.S. Jadoun</h3>
+                        <div class="member-role">Dean CABM,GBPUAT, Pantnagar</div>
+                        <!-- <p class="member-affiliation">Professor of Political Science, JNU</p> -->
+                    </div>
+                    <div class="advisory-member">
+                        <h3 class="member-name">Dr. N.S. Rathore</h3>
+                        <div class="member-role">Ex-DDG Education ICAR & Director GITS , Udaipur</div>
+                        <!-- <p class="member-affiliation">Former CEO, National Media Group</p> -->
+                    </div>
+                    <div class="advisory-member">
+                        <h3 class="member-name">Prof. (Dr.) R.G. Upadhyay</h3>
+                        <div class="member-role">Formerly Professor & Head and Director Extension Education CSKHPKV, Palampur-176062 (Himachal Pradesh)</div>
+                        <!-- <p class="member-affiliation">Director, Centre for Science and Environment</p> -->
+                    </div>
+                    <div class="advisory-member">
+                        <h3 class="member-name">Mr. Prakash Pudasani</h3>
+                        <div class="member-role">Ex-President of the student world assembly</div>
+                        <!-- <p class="member-affiliation">Founder, TechInnovate India</p> -->
+                    </div>
+                    <div class="advisory-member">
+                        <h3 class="member-name">Dr. Anuradha Ranjan Kumari</h3>
+                        <div class="member-role">Senior Scientist and Head, KVK Seohar</div>
+                        <!-- <p class="member-affiliation">Director, India International Centre</p> -->
+                    </div>
+                    <!-- <div class="advisory-member">
+                        <h3 class="member-name">Prakash Jha</h3>
+                        <div class="member-role">Media Advisor</div>
+                        <p class="member-affiliation">Filmmaker and Social Activist</p>
+                    </div>
+                    <div class="advisory-member">
+                        <h3 class="member-name">Dr. Rajiv Kumar</h3>
+                        <div class="member-role">Policy Advisor</div>
+                        <p class="member-affiliation">Former Vice Chairman, Policy Think Tank</p>
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- Join Our Board Section -->
+            <div class="join-board">
+                <h3>Join Our Editorial Board</h3>
+                <p>Uday Bharat Magazine is always looking for experienced professionals to join our editorial board and contribute to our mission of providing insightful, balanced, and high-quality journalism. If you are an expert in your field with a passion for storytelling and a commitment to journalistic integrity, we'd love to hear from you.</p>
+                <a href="contact.html" class="btn-primary">Contact Us</a>
+            </div>
+        </div>
+    </main>
+
+       <!-- Footer -->
+       <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-widget">
+                        <div class="footer-logo">
+                            <h2>उदय भारत</h2>
+                            <p>E-Magazine</p>
+                        </div>
+                        <p>Uday Bharat e-Magazine is dedicated to celebrating the spirit of progress, innovation, and the cultural richness of India. More than just a publication, it is a movement that highlights stories that matter, ideas that drive change, and the essence of a nation striving toward its full potential.</p>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/groups/1372117022978461"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/ecofast_agrisolution?igsh=cHJ0OTZsYjI3M3Q5"><i class="fab fa-instagram"></i></a>
+                            <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
+                            <a href="https://www.linkedin.com/company/uday-bharat/"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Current Issues</a></li>
+                            <li><a href="#">Archives</a></li>
+                            <li><a href="#">Submission Guidelines</a></li>
+                            <li><a href="#">Board Members</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Categories</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Agriculture</a></li>
+                            <li><a href="#">Science & Technology</a></li>
+                            <li><a href="#">Environment</a></li>
+                            <li><a href="#">Health & Nutrition</a></li>
+                            <li><a href="#">Community Upliftment</a></li>
+                            <li><a href="#">Social Issues</a></li>
+                            <!-- <li><a href="#">Health</a></li> -->
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Contact Info</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> Eco Fast Agri Solution Private Limited, Tariyani Chhapra, Seohar, Bihar 843329</li>
+                            <li><i class="fas fa-phone"></i> +91-8958123233</li>
+                            <li><i class="fas fa-envelope"></i>  editor@udaybharatmag.in</li>
+                        </ul>
+                        <div class="download-apps">
+                            <h4>Download Our App</h4>
+                            <div class="app-buttons">
+                                <a href="#" class="app-btn">
+                                    <i class="fab fa-google-play"></i>
+                                    <span>Google Play</span>
+                                </a>
+                                <a href="#" class="app-btn">
+                                    <i class="fab fa-apple"></i>
+                                    <span>App Store</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 Uday Bharat Magazine. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+    </body>
+    </html>

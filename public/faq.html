@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Uday Bharat Magazine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles specific to FAQ page */
+        .page-header {
+            background-color: #f9f9f9;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
+            font-size: 36px;
+            color: #FF9933;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            font-size: 18px;
+        }
+        
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-search {
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .faq-search input {
+            width: 100%;
+            padding: 15px 20px;
+            padding-left: 50px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .faq-search i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+        
+        .faq-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .faq-category {
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-category.active {
+            background-color: #FF9933;
+            color: #fff;
+        }
+        
+        .faq-category:hover:not(.active) {
+            background-color: #e0e0e0;
+        }
+        
+        .faq-section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            color: #138808;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .faq-accordion {
+            margin-bottom: 30px;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background-color: #fff;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question {
+            background-color: #f9f9f9;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            line-height: 1.6;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 1000px;
+        }
+        
+        .not-found {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .not-found i {
+            font-size: 48px;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .not-found h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .not-found p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .contact-cta {
+            background-color: #f9f9f9;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .contact-cta h3 {
+            font-size: 24px;
+            color: #138808;
+            margin-bottom: 20px;
+        }
+        
+        .contact-cta p {
+            max-width: 700px;
+            margin: 0 auto 25px;
+            line-height: 1.8;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background-color: #FF9933;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e88a2a;
+        }
+        
+        @media (max-width: 768px) {
+            .faq-categories {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 10px;
+            }
+            
+            .faq-category {
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <span><i class="fas fa-calendar-alt"></i> Monday, May 4, 2025</span>
+                <span><i class="fas fa-map-marker-alt"></i> New Delhi, India</span>
+            </div>
+            <div class="top-right">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>UDAY BHARAT</h1>
+                <p>E-Magazine</p>
+            </div>
+            <div class="ad-space">
+                <div class="ad-placeholder">Advertisement Space</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about-us.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="current-issues.html"><i class="fas fa-newspaper"></i> Current Issues</a></li>
+                <li><a href="archives.html"><i class="fas fa-archive"></i> Archives</a></li>
+                <li><a href="submission-guidelines.html"><i class="fas fa-file-alt"></i> Submission Guidelines</a></li>
+                <li><a href="board-members.html"><i class="fas fa-users"></i> Board Members</a></li>
+                <li><a href="faq.html" class="active"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            </ul>
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Form -->
+    <div class="search-form">
+        <div class="container">
+            <form>
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="container">
+                <h1>Frequently Asked Questions</h1>
+                <p>Find answers to common questions about Uday Bharat E-Magazine, subscriptions, content, and more.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="faq-container">
+                <!-- FAQ Search -->
+                <div class="faq-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="faqSearch" placeholder="Search for questions...">
+                </div>
+
+                <!-- FAQ Categories -->
+                <div class="faq-categories">
+                    <div class="faq-category active" data-category="all">All Questions</div>
+                    <div class="faq-category" data-category="subscription">Subscription</div>
+                    <div class="faq-category" data-category="content">Content & Editorial</div>
+                    <div class="faq-category" data-category="digital">Digital Access</div>
+                    <div class="faq-category" data-category="submission">Submissions</div>
+                    <div class="faq-category" data-category="general">General</div>
+                </div>
+
+                <!-- Subscription FAQs -->
+                <div class="faq-section" id="subscription">
+                    <h2 class="section-title">Subscription</h2>
+                    <div class="faq-accordion">
+                        <div class="faq-item" data-category="subscription">
+                            <div class="faq-question">
+                                How can I subscribe to Uday Bharat Magazine?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>You can subscribe to Uday Bharat Magazine through multiple channels:</p>
+                                <ul>
+                                    <li><strong>Online:</strong> Visit our website and click on the "Subscribe" button to choose from various subscription plans.</li>
+                                    <li><strong>Mobile App:</strong> Download our app from Google Play Store or Apple App Store and subscribe through the app.</li>
+                                    <li><strong>Phone:</strong> Call our customer service at +91 98765 43210 to subscribe over the phone.</li>
+                                    <li><strong>Email:</strong> Send an email to subscriptions@udaybharatmag.in with your details, and our team will assist you.</li>
+                                </ul>
+                                <p>We offer monthly, quarterly, and annual subscription plans with various benefits.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" data-category="subscription">
+                            <div class="faq-question">
+                                What are the subscription rates?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Our current subscription rates are as follows:</p>
+                                <ul>
+                                    <li><strong>Monthly:</strong> ₹250 per month</li>
+                                    <li><strong>Quarterly:</strong> ₹675 (₹225 per month, save 10%)</li>
+                                    <li><strong>Annual:</strong> ₹2,400 (₹200 per month, save 20%)</li>
+                                    <li><strong>Digital Only:</strong> ₹150 per month or ₹1,500 per year</li>
+                                    <li><strong>Print + Digital Bundle:</strong> ₹300 per month or ₹3,000 per year</li>
+                                </ul>
+                                <p>We also offer special rates for students, educational institutions, and corporate subscriptions. Please contact our subscription department for more details.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" data-category="subscription">
+                            <div class="faq-question">
+                                How do I renew my subscription?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>You can renew your subscription in several ways:</p>
+                                <ul>
+                                    <li><strong>Automatic Renewal:</strong> If you've opted for automatic renewal, your subscription will be renewed automatically before it expires using your saved payment method.</li>
+                                    <li><strong>Online:</strong> Log in to your account on our website and navigate to the "My Subscription" section to renew.</li>
+                                    <li><strong>Phone:</strong> Call our customer service at +91 98765 43210 to renew over the phone.</li>
+                                    <li><strong>Email:</strong> Send an email to renewals@udaybharatmag.in with your subscription ID.</li>
+                                </ul>
+                                <p>We typically send renewal reminders via email 30 days before your subscription expires.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" data-category="subscription">
+                            <div class="faq-question">
+                                Can I cancel my subscription?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Yes, you can cancel your subscription at any time. Here's how:</p>
+                                <ul>
+                                    <li><strong>Online:</strong> Log in to your account on our website, go to "My Subscription," and click on "Cancel Subscription."</li>
+                                    <li><strong>Phone:</strong> Call our customer service at +91 98765 43210 to cancel over the phone.</li>
+                                    <li><strong>Email:</strong> Send an email to cancellations@udaybharatmag.in with your subscription ID and reason for cancellation.</li>
+                                </ul>
+                                <p>Please note that for annual subscriptions, we offer prorated refunds if you cancel before the subscription period ends. For monthly subscriptions, cancellations take effect at the end of the current billing cycle.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" data-category="subscription">
+                            <div class="faq-question">
+                                I haven't received my magazine. What should I do?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>If you haven't received your magazine, please follow these steps:</p>
+                                <ol>
+                                    <li>Check if your subscription is active by logging into your account on our website.</li>
+                                    <li>Verify that your delivery address is correct in your account settings.</li>
+                                    <li>Contact our customer service at +91 98765 43210 or email support@udaybharatmag.in with your subscription ID and details of the missing issue.</li>
+                                </ol>
+                                <p>We typically dispatch our magazines on the 25th of each month for the next month's issue. Please allow 3-5 business days for delivery within metro cities and 5-7 business days for other locations.</p>
+                                <p>If your issue is confirmed missing, we will send a replacement copy or extend your subscription by one month, based on your preference.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content & Editorial FAQs -->
+                <div class="faq-section" id="content">
+                    <h2 class="section-title">Content & Editorial</h2>
+                    <div class="faq-accordion">
+                        <div class="faq-item" data-category="content">
+                            <div class="faq-question">
+                                What type of content does Uday Bharat Magazine publish?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Uday Bharat Magazine publishes a wide range of content focused on India's growth story and development. Our content categories include:</p>
+                                <ul>
+                                    <li><strong>Politics & Governance:</strong> Analysis of political developments, policy initiatives, and governance issues.</li>
+                                    <li><strong>Economy & Business:</strong> Coverage of economic trends, business innovations, and financial insights.</li>
+                                    <li><strong>Culture & Society:</strong> Features on arts, literature, cinema, and social movements across India.</li>
+                                    <li><strong>Technology & Innovation:</strong> Stories about technological advancements, startups, and digital transformation.</li>
+                                    <li><strong>International Affairs:</strong> Analysis of global events from an Indian perspective and India's role in world affairs.</li>
+                                    <li><strong>Environment & Sustainability:</strong> Coverage of environmental challenges, conservation efforts, and sustainable development.</li>
+                                </ul>
+                                <p>We strive to provide balanced, well-researched, and insightful content that helps readers understand the complex issues shaping India's present and future.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" data-category="content">
+                            <div class="faq-question">
+                                How often is the magazine published?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Uday Bharat Magazine is published monthly, with 12 regular issues per year. Each issue is released on the 1st of every month.</p>
+                                <p>In addition to our regular monthly issues, we also publish special editions on significant occasions such as Republic Day, Independence Day, and year-end reviews. These special editions often feature guest contributors, extended analysis, and exclusive interviews.</p>
+                                <p>Our digital platform is updated daily with new articles, opinion pieces, and multimedia content to keep readers informed between print issues.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" data-category="content">
+                            <div class="faq-question">
+                                How can I suggest a topic or provide feedback on content?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>We welcome topic suggestions and feedback from our readers. Here's how you can share your thoughts:</p>
+                                <ul>
+                                    <li><strong>Email:</strong> Send your suggestions or feedback to editorial@udaybharatmag.in</li>
+                                    <li><strong>Website:</strong> Use the feedback form on our "Contact Us" page</li>
+                                    <li><strong>Social Media:</strong> Reach out to us on Twitter, Facebook, or Instagram</li>
+                                    <li><strong>Letters to the Editor:</strong> Send traditional mail to our office address</li>
+                                </ul>
+                                <p>Our editorial team reviews all suggestions and feedback. While we cannot respond to every submission individually, we value your input and use it to improve our content and coverage.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" data-category="content">
+                            <div class="faq-question">
+                                Does Uday Bharat Magazine have a political bias?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Uday Bharat Magazine is committed to journalistic integrity and balanced reporting. We strive to present diverse perspectives on complex issues without adhering to any particular political ideology.</p>
+                                <p>Our editorial policy emphasizes:</p>
+                                <ul>
+                                    <li>Factual accuracy and thorough research</li>
+                                    <li>Representation of multiple viewpoints</li>
+                                    <li>Clear distinction between news reporting and opinion content</li>
+                                    <li>Transparency about sources and methods</li>
+                                </ul>
+                                <p>We believe in constructive journalism that not only highlights challenges but also explores solutions. Our focus is on India's development journey, which transcends partisan politics.</p>
+                                <p>That said, we recognize that complete objectivity is an ideal rather than a reality. We encourage readers to engage critically with all media, including ours, and to seek information from diverse sources.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Access FAQs -->
+                <div class="faq-section" id="digital">
+                    <h2 class="section-title">Digital Access</h2>
+                    <div class="faq-accordion">
+                        <div class="faq-item" data-category="digital">
+                            <div class="faq-question">
+                                How do I access the digital edition of the magazine?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>You can access the digital edition of Uday Bharat Magazine through multiple platforms:</p>
+                                <ul>
+                                    <li><strong>Website:</strong> Log in to your account on our website and navigate to "Digital Edition" to read the current and past issues.</li>
+                                    <li><strong>Mobile App:</strong> Download our app from Google Play Store or Apple App Store, log in with your subscription credentials, and access the magazine.</li>
+                                    <li><strong>E-readers:</strong> Our magazine is available on Kindle and other e-reader platforms.</li>
+                                </ul>
+                                <p>Digital subscribers receive an email notification with a direct link when a new issue is published. All digital editions include enhanced features such as interactive elements, embedded videos, and hyperlinked references.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" data-category="digital">
+                            <div class="faq-question">
+                                Can I read Uday Bharat Magazine offline?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Yes, you can read Uday Bharat Magazine offline through our mobile app. Here's how:</p>
+                                <ol>
+                                    <li>Open the Uday Bharat Magazine app on your device</li>
+                                    <li>Log in with your subscription credentials</li>
+                                    <li>Navigate to the issue you want to read offline</li>
+                                    <li>Tap the "Download" icon to save the issue to your device</li>
+                                    <li>Once downloaded, you can access the issue even without an internet connection</li>
+                                </ol>
+                                <p>Downloaded issues remain available offline until you manually delete them or until your subscription expires. Please note that some interactive features may have limited functionality in offline mode.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" data-category="digital">
+                            <div class="faq-question">
+                                How many devices can I use with my digital subscription?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>With a standard digital subscription, you can access Uday Bharat Magazine on up to three devices simultaneously. This allows you to read on your computer, tablet, and smartphone without having to log out from other devices.</p>
+                                <p>If you need access on more than three devices, we offer premium subscription plans for families and small organizations. Please contact our customer service for more information about these plans.</p>
+                                <p>For security reasons, if we detect unusual login activity or sharing of credentials beyond the allowed limit, we may temporarily restrict access to your account.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" data-category="digital">
+                            <div class="faq-question">
+                                I'm having technical issues with the digital edition. What should I do?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>If you're experiencing technical issues with our digital edition, please try these troubleshooting steps:</p>
+                                <ol>
+                                    <li><strong>Update the app:</strong> Ensure you have the latest version of our app installed</li>
+                                    <li><strong>Clear cache:</strong> Clear your browser cache or app cache</li>
+                                    <li><strong>Restart:</strong> Close and reopen the app or browser</li>
+                                    <li><strong>Check internet:</strong> Verify your internet connection is stable</li>
+                                    <li><strong>Try another device:</strong> If possible, try accessing on a different device</li>
+                                </ol>
+                                <p>If the issue persists, please contact our technical support team at support@udaybharatmag.in with the following information:</p>
+                                <ul>
+                                    <li>Device type and model</li>
+                                    <li>Operating system version</li>
+                                    <li>App version (if applicable)</li>
+                                    <li>Browser type and version (if accessing via website)</li>
+                                    <li>Detailed description of the issue</li>
+                                    <li>Screenshots (if possible)</li>
+                                </ul>
+                                <p>Our technical team typically responds within 24 hours on business days.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submissions FAQs -->
+                <div class="faq-section" id="submission">
+                    <h2 class="section-title">Submissions</h2>
+                    <div class="faq-accordion">
+                        <div class="faq-item" data-category="submission">
+                            <div class="faq-question">
+                                How can I submit an article for publication?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>We welcome submissions from writers, journalists, academics, and experts. To submit an article for consideration, please follow these steps:</p>
+                                <ol>
+                                    <li>Review our <a href="submission-guidelines.html">Submission Guidelines</a> page for detailed information on our requirements and process</li>
+                                    <li>Prepare your submission according to our formatting guidelines</li>
+                                    <li>Submit your article through our online submission form on the Submission Guidelines page or email it to submissions@udaybharatmag.in</li>
+                                </ol>
+                                <p>Please include a brief author bio, your contact information, and a summary of your article. Due to the high volume of submissions we receive, our editorial team may take 4-6 weeks to review your submission. If we're interested in publishing your work, we'll contact you with further details.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" data-category="submission">
+                            <div class="faq-question">
+                                Does Uday Bharat Magazine pay for published articles?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Yes, Uday Bharat Magazine pays for all published articles. Our rates vary based on the type of content, length, complexity of reporting, and the contributor's experience.</p>
+                                <p>For commissioned articles, we discuss compensation before the assignment begins. For unsolicited submissions that we accept for publication, we will propose a rate during the acceptance process.</p>
+                                <p>Payment is typically processed within 30 days of publication. We require contributors to submit an invoice and necessary tax documentation before payment can be processed.</p>
+                                <p>Please note that we do not pay for letters to the editor, reader comments, or social media contributions.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" data-category="submission">
+                            <div class="faq-question">
+                                What happens after I submit my article?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>After you submit your article, here's what happens:</p>
+                                <ol>
+                                    <li><strong>Acknowledgment:</strong> You'll receive an automated acknowledgment confirming we've received your submission</li>
+                                    <li><strong>Initial Review:</strong> Our editorial team conducts a preliminary review to determine if the submission aligns with our content focus and quality standards</li>
+                                    <li><strong>Editorial Decision:</strong> If your submission passes the initial review, it undergoes a more thorough evaluation by our editors</li>
+                                    <li><strong>Response:</strong> If we're interested in your submission, we'll contact you within 4-6 weeks. Due to the volume of submissions, we may not respond if we decide not to publish your work</li>
+                                    <li><strong>Editing Process:</strong> If accepted, your article will go through our editing process, which may involve revisions, fact-checking, and formatting</li>
+                                    <li><strong>Publication:</strong> Once finalized, your article will be scheduled for publication in an upcoming issue or on our digital platform</li>
+                                </ol>
+                                <p>Throughout this process, we maintain open communication with contributors whose work we've accepted for publication.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- General FAQs -->
+                <div class="faq-section" id="general">
+                    <h2 class="section-title">General</h2>
+                    <div class="faq-accordion">
+                        <div class="faq-item" data-category="general">
+                            <div class="faq-question">
+                                How can I advertise in Uday Bharat Magazine?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>To advertise in Uday Bharat Magazine, please contact our advertising department:</p>
+                                <ul>
+                                    <li><strong>Email:</strong> advertising@udaybharatmag.in</li>
+                                    <li><strong>Phone:</strong> +91 98765 43210</li>
+                                </ul>
+                                <p>We offer advertising opportunities in both our print and digital editions, with various formats and placement options available. Our team can provide you with our media kit, which includes information about our readership demographics, circulation figures, advertising rates, and technical specifications.</p>
+                                <p>We also offer sponsored content opportunities, subject to our editorial guidelines and clear disclosure policies.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" data-category="general">
+                            <div class="faq-question">
+                                How can I report a factual error in an article?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>We take factual accuracy very seriously and appreciate readers who help us maintain high standards. If you spot a factual error in any of our articles, please report it by:</p>
+                                <ul>
+                                    <li><strong>Email:</strong> Send details to corrections@udaybharatmag.in with "Correction Request" in the subject line</li>
+                                    <li><strong>Contact Form:</strong> Use the correction request form on our website</li>
+                                </ul>
+                                <p>Please include the following information:</p>
+                                <ul>
+                                    <li>Title of the article and issue date/URL</li>
+                                    <li>The specific error you've identified</li>
+                                    <li>The correct information, with sources if possible</li>
+                                    <li>Your contact information (optional)</li>
+                                </ul>
+                                <p>Our editorial team will review your report promptly. If we confirm the error, we will publish a correction in the next issue and update the digital version of the article with an appropriate note.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" data-category="general">
+                            <div class="faq-question">
+                                Does Uday Bharat Magazine offer internships or job opportunities?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Yes, Uday Bharat Magazine offers both internships and job opportunities for talented individuals passionate about journalism and media.</p>
+                                <p><strong>Internships:</strong></p>
+                                <ul>
+                                    <li>We offer 3-6 month internships in editorial, design, digital media, and marketing departments</li>
+                                    <li>Internships are available year-round, with specific application periods</li>
+                                    <li>Most internships are paid positions</li>
+                                    <li>Applications should be sent to internships@udaybharatmag.in</li>
+                                </ul>
+                                <p><strong>Job Opportunities:</strong></p>
+                                <ul>
+                                    <li>Current job openings are posted on the "Careers" section of our website</li>
+                                    <li>We hire for various roles including reporters, editors, designers, digital content creators, and business development professionals</li>
+                                    <li>Applications should be sent to careers@udaybharatmag.in</li>
+                                </ul>
+                                <p>We value diversity and encourage applications from candidates with varied backgrounds and perspectives.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" data-category="general">
+                            <div class="faq-question">
+                                How can I contact Uday Bharat Magazine?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>You can contact Uday Bharat Magazine through various channels:</p>
+                                <ul>
+                                    <li><strong>General Inquiries:</strong> info@udaybharatmag.in or +91 98765 43210</li>
+                                    <li><strong>Subscription Support:</strong> subscriptions@udaybharatmag.in or +91 98765 43211</li>
+                                    <li><strong>Editorial Department:</strong> editorial@udaybharatmag.in</li>
+                                    <li><strong>Advertising:</strong> advertising@udaybharatmag.in</li>
+                                    <li><strong>Technical Support:</strong> support@udaybharatmag.in</li>
+                                </ul>
+                                <p><strong>Office Address:</strong><br>
+                                Uday Bharat Magazine<br>
+                                123 Media House, Connaught Place<br>
+                                New Delhi - 110001<br>
+                                India</p>
+                                <p>Our office hours are Monday to Friday, 9:30 AM to 6:00 PM IST. You can also reach us through our social media channels on Facebook, Twitter, Instagram, and LinkedIn.</p>
+                                <p>For a more detailed contact form, please visit our <a href="contact.html">Contact Us</a> page.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Not Found Section (Hidden by default) -->
+                <div class="not-found" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No Results Found</h3>
+                    <p>We couldn't find any FAQs matching your search. Please try different keywords or browse the categories.</p>
+                </div>
+
+                <!-- Contact CTA -->
+                <div class="contact-cta">
+                    <h3>Didn't Find Your Answer?</h3>
+                    <p>If you couldn't find the information you were looking for, our customer support team is here to help. Feel free to reach out with any questions or concerns.</p>
+                    <a href="contact.html" class="btn-primary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+     <!-- Footer -->
+     <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-widget">
+                        <div class="footer-logo">
+                            <h2>उदय भारत</h2>
+                            <p>E-Magazine</p>
+                        </div>
+                        <p>Uday Bharat e-Magazine is dedicated to celebrating the spirit of progress, innovation, and the cultural richness of India. More than just a publication, it is a movement that highlights stories that matter, ideas that drive change, and the essence of a nation striving toward its full potential.</p>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/groups/1372117022978461"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/ecofast_agrisolution?igsh=cHJ0OTZsYjI3M3Q5"><i class="fab fa-instagram"></i></a>
+                            <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
+                            <a href="https://www.linkedin.com/company/uday-bharat/"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Current Issues</a></li>
+                            <li><a href="#">Archives</a></li>
+                            <li><a href="#">Submission Guidelines</a></li>
+                            <li><a href="#">Board Members</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Categories</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Agriculture</a></li>
+                            <li><a href="#">Science & Technology</a></li>
+                            <li><a href="#">Environment</a></li>
+                            <li><a href="#">Health & Nutrition</a></li>
+                            <li><a href="#">Community Upliftment</a></li>
+                            <li><a href="#">Social Issues</a></li>
+                            <!-- <li><a href="#">Health</a></li> -->
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Contact Info</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> Eco Fast Agri Solution Private Limited, Tariyani Chhapra, Seohar, Bihar 843329</li>
+                            <li><i class="fas fa-phone"></i> +91-8958123233</li>
+                            <li><i class="fas fa-envelope"></i>  editor@udaybharatmag.in</li>
+                        </ul>
+                        <div class="download-apps">
+                            <h4>Download Our App</h4>
+                            <div class="app-buttons">
+                                <a href="#" class="app-btn">
+                                    <i class="fab fa-google-play"></i>
+                                    <span>Google Play</span>
+                                </a>
+                                <a href="#" class="app-btn">
+                                    <i class="fab fa-apple"></i>
+                                    <span>App Store</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 Uday Bharat Magazine. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- <script src="script.js"></script> -->
+    </body>
+    </html>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ Accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', function() {
+                    // Toggle active class on clicked item
+                    item.classList.toggle('active');
+                    
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            // FAQ Category filtering
+            const categoryTabs = document.querySelectorAll('.faq-category');
+            
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    // Show/hide sections based on category
+                    if (category === 'all') {
+                        document.querySelectorAll('.faq-section').forEach(section => {
+                            section.style.display = 'block';
+                        });
+                        document.querySelectorAll('.faq-item').forEach(item => {
+                            item.style.display = 'block';
+                        });
+                    } else {
+                        document.querySelectorAll('.faq-section').forEach(section => {
+                            section.style.display = 'block';
+                        });
+                        
+                        document.querySelectorAll('.faq-item').forEach(item => {
+                            if (item.getAttribute('data-category') === category) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // FAQ Search functionality
+            const searchInput = document.getElementById('faqSearch');
+            const notFoundSection = document.querySelector('.not-found');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                let resultsFound = false;
+                
+                if (searchTerm === '') {
+                    // Reset view if search is cleared
+                    document.querySelectorAll('.faq-section').forEach(section => {
+                        section.style.display = 'block';
+                    });
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.style.display = 'block';
+                    });
+                    notFoundSection.style.display = 'none';
+                    return;
+                }
+                
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    const questionText = item.querySelector('.faq-question').textContent.toLowerCase();
+                    const answerText = item.querySelector('.faq-answer').textContent.toLowerCase();
+                    
+                    if (questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        resultsFound = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide sections based on whether they have visible items
+                document.querySelectorAll('.faq-section').forEach(section => {
+                    const hasVisibleItems = Array.from(section.querySelectorAll('.faq-item')).some(item => item.style.display !== 'none');
+                    section.style.display = hasVisibleItems ? 'block' : 'none';
+                });
+                
+                // Show/hide not found message
+                notFoundSection.style.display = resultsFound ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Guidelines - Uday Bharat Magazine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles specific to Submission Guidelines page */
+        .page-header {
+            background-color: #f9f9f9;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
+            font-size: 36px;
+            color: #FF9933;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            font-size: 18px;
+        }
+        
+        .guidelines-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .guidelines-section {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .guidelines-section h2 {
+            font-size: 24px;
+            color: #138808;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .guidelines-section p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .guidelines-list {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .guidelines-list li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .guidelines-list li:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background-color: #FF9933;
+            border-radius: 50%;
+        }
+        
+        .note-box {
+            background-color: #fff3e9;
+            border-left: 4px solid #FF9933;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .note-box h4 {
+            color: #FF9933;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .submission-form {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 5px;
+            margin-top: 40px;
+        }
+        
+        .submission-form h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-group .file-input {
+            padding: 20px;
+            border: 2px dashed #ddd;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group .file-input:hover {
+            border-color: #FF9933;
+            background-color: #fff3e9;
+        }
+        
+        .form-group .file-input i {
+            font-size: 24px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        .form-group .file-input p {
+            margin-bottom: 5px;
+        }
+        
+        .form-group .file-input input {
+            display: none;
+        }
+        
+        .btn-submit {
+            background-color: #FF9933;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .btn-submit:hover {
+            background-color: #e88a2a;
+        }
+        
+        .contact-info-box {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .contact-info-box h4 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .contact-info-box p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-info-box a {
+            color: #FF9933;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .guidelines-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <span><i class="fas fa-calendar-alt"></i> Monday, May 4, 2025</span>
+                <span><i class="fas fa-map-marker-alt"></i> New Delhi, India</span>
+            </div>
+            <div class="top-right">
+                <a href="https://www.facebook.com/groups/1372117022978461"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/ecofast_agrisolution?igsh=cHJ0OTZsYjI3M3Q5"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/uday-bharat/"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>UDAY BHARAT</h1>
+                <p>E-Magazine</p>
+            </div>
+            <div class="ad-space">
+                <div class="ad-placeholder">Advertisement Space</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about-us.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="current-issues.html"><i class="fas fa-newspaper"></i> Current Issues</a></li>
+                <li><a href="archives.html"><i class="fas fa-archive"></i> Archives</a></li>
+                <li><a href="submission-guidelines.html" class="active"><i class="fas fa-file-alt"></i> Submission Guidelines</a></li>
+                <li><a href="board-members.html"><i class="fas fa-users"></i> Board Members</a></li>
+                <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            </ul>
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Form -->
+    <div class="search-form">
+        <div class="container">
+            <form>
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="container">
+                <h1>Submission Guidelines</h1>
+                <p>Guidelines for authors, journalists, and contributors interested in publishing with Uday Bharat Magazine.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="guidelines-container">
+                <!-- General Guidelines Section -->
+                <div class="guidelines-section">
+                    <h2>General Guidelines</h2>
+                    <p>Uday Bharat invite writers, researchers, academicians, practitioners, and enthusiasts to contribute original and impactful content. Before submitting, kindly review the following guidelines to ensure your work aligns with our objectives and standards.</p>
+                    
+                    <p>We welcome submissions under the following categories:</p>
+                    <h3 style="font-size: 20px; margin: 20px 0 10px; color: #333;">1. General Articles</h3>
+                    <p>Focused on delivering insightful perspectives and practical knowledge across disciplines such as agriculture, science & technology, health, environment, and social issues. Word Limit: 1,500 to 3,000 words
+
+                        Format: Calibri, 12 pt, single-spaced</p>
+                    
+                    <ul class="guidelines-list">
+                        <li>Author(s) and Affiliation(s)</li>
+                        <li>Abstract (150–200 words)</li>
+                        <li>Keywords (up to 5)</li>
+                        <li>Introduction</li>
+                        <li>Main Content (divided into sections with headings)</li>
+                        <li>Conclusion/Call to Action</li>
+                        <li>References (if applicable)</li>
+                    </ul>
+                    
+                    <div class="note-box">
+                        <h4>Note</h4>
+                        <p>Due to the high volume of submissions we receive, we may not be able to respond to all submissions. If we are interested in your work, we will contact you within 4-6 weeks.</p>
+                    </div>
+                </div>
+                
+                <!-- Content Types Section -->
+                <div class="guidelines-section">
+                    <h2>Content Types & Specifications</h2>
+                    <p>We accept the following types of submissions:</p>
+                    
+                    <h3 style="font-size: 20px; margin: 20px 0 10px; color: #333;">2. Short Reports & Communications</h3>
+                    <p>Concise updates, innovative approaches, or findings in any relevant field. Word Limit: 800 to 1,000 words Format: Times New Roman, 12 pt, single-spaced</p>
+                    <ul class="guidelines-list">
+                        <!-- <li><strong>Word Count:</strong> 1,500-3,000 words</li>
+                        <li><strong>Format:</strong> In-depth analysis, reporting, or narrative journalism on significant topics</li>
+                        <li><strong>Requirements:</strong> Must include proper citations, quotes from relevant sources, and high-quality images (if applicable)</li> -->
+                    </ul>
+                    
+                    <h3 style="font-size: 20px; margin: 20px 0 10px; color: #333;">3. Tips and Insights</h3>
+                    <p>Practical tips, expert advice, or industry best practices aimed at empowering readers with actionable knowledge. Word Limit: 800–1,000 words</p>
+                    <!-- <ul class="guidelines-list">
+                        <li><strong>Word Count:</strong> 800-1,200 words</li>
+                        <li><strong>Format:</strong> Well-argued perspectives on current issues, backed by evidence and analysis</li>
+                        <li><strong>Requirements:</strong> Clear thesis, logical structure, and constructive conclusions</li>
+                    </ul> -->
+                    
+                    <h3 style="font-size: 20px; margin: 20px 0 10px; color: #333;">4. Recent Advancements</h3>
+                    <p>Updates on groundbreaking developments or emerging trends in science, technology, agriculture, or societal impact. Word Limit: 1,000–2,000 words</p>
+                    <!-- <ul class="guidelines-list">
+                        <li><strong>Word Count:</strong> 1,000-2,000 words</li>
+                        <li><strong>Format:</strong> Q&A or narrative style interviews with notable figures</li>
+                        <li><strong>Requirements:</strong> Brief introduction of the interviewee, high-quality portrait photo, and proper attribution</li>
+                    </ul> -->
+                    
+                    <h3 style="font-size: 20px; margin: 20px 0 10px; color: #333;">5. Creative Contributions</h3>
+                    <p>Includes essays, poetry, opinion pieces, or stories that reflect the ethos of Uday Bharat Magazine. Word Limit: 800–1,500 words</p>
+                    <!-- <ul class="guidelines-list">
+                        <li><strong>Images:</strong> 10-15 high-resolution photographs</li>
+                        <li><strong>Format:</strong> Visual storytelling with accompanying text (300-500 words)</li>
+                        <li><strong>Requirements:</strong> Original photography with proper captions and context</li>
+                    </ul> -->
+                    
+                    <h3 style="font-size: 20px; margin: 20px 0 10px; color: #333;">Formatting Requirements</h3>
+                    <p>File Format: Submissions should be in MS Word (.doc or .docx).
+
+                        Page Margins: 1-inch margin on all sides.
+                        
+                        Language: Submissions must be in English. Ensure that the language is clear and professional.
+                        
+                        Images & Graphics: Include high-resolution images or diagrams, if applicable. Attach them
+                        separately in .jpg or .png format and indicate their placement within the text.</p>
+                    <!-- <ul class="guidelines-list">
+                        <li><strong>Word Count:</strong> 800-1,200 words</li>
+                        <li><strong>Format:</strong> Critical analysis of recent books relevant to our focus areas</li>
+                        <li><strong>Requirements:</strong> Balanced assessment, contextual information, and publication details</li>
+                    </ul> -->
+                    <h3 style="font-size: 20px; margin: 20px 0 10px; color: #333;">Submission Process</h3>
+                    <p>Step 1: Review Guidelines
+                        Ensure that your submission adheres to the formatting and word count requirements mentioned above. <br>
+                        
+                        Step 2: Fill Out the Submission Form
+                        Click here to fill out the submission form. Provide accurate details such as your name, affiliation, contact information, and submission title. <br>
+                        
+                        Step 3: Upload Your Work
+                        Attach your article or report in MS Word format. If your submission includes images or supplementary materials, upload them separately in the designated section of the form. <br>
+                        
+                        Step 4After submitting, you will receive a confirmation email with a reference number for your submission.
+                        Please retain this email for future correspondence.</p>
+                </div>
+                
+                <!-- Formatting Guidelines Section -->
+                <div class="guidelines-section">
+                    <h2>Important Notes</h2>
+                    <p>To ensure your submission can be processed efficiently, please follow these formatting guidelines:</p>
+                    
+                    <ul class="guidelines-list">
+                        <li>Submissions must be original and unpublished. Plagiarized content will be rejected immediately.</li>
+                        <li>All submissions will undergo editorial review. Acceptance is subject to the discretion of the editorial board.</li>
+                        <li>Authors may be asked to revise their submissions before final acceptance.</li>
+                        <li> By submitting your work, you grant Uday Bharat Magazine the right to publish it in print or online formats.</li>
+                        <!-- <li>Provide a brief author bio (50-100 words) and a high-resolution headshot.</li>
+                        <li>Include a 1-2 sentence summary of your submission for social media promotion.</li>
+                        <li>For citations, follow the Chicago Manual of Style format.</li>
+                        <li>Images should be submitted separately as high-resolution JPEG or PNG files (minimum 1200px width).</li> -->
+                    </ul>
+                    
+                    <div class="note-box">
+                        <h4>Image Requirements</h4>
+                        <p>If your submission includes images, ensure you have the rights to use them. Include proper credits and captions for each image. We prefer original photography, but if you're using stock images or images from other sources, ensure you have the necessary permissions.</p>
+                    </div>
+                </div>
+                
+                <!-- Rights & Compensation Section -->
+                <div class="guidelines-section">
+                    <h2>Contact for Submissions and Queries</h2>
+                    <!-- <p>By submitting your work to Uday Bharat Magazine, you acknowledge the following terms:</p> -->
+                    
+                    <ul class="guidelines-list">
+                        <li>For any questions or technical difficulties with the submission process, feel free to contact us.</li>
+                        <li>Email: editor@udaybharatmag.in</li>
+                        <li>Phone: +91-8958123233</li>
+                        <!-- <li>Compensation varies based on the type of content, length, and contributor experience. Rates will be discussed upon acceptance of your submission.</li>
+                        <li>Payment is processed within 30 days of publication.</li> -->
+                    </ul>
+                </div>
+                
+                <!-- Submission Form -->
+              <div class="submission-form">
+    <h3>Submit Your Work</h3>
+    <form id="submissionForm" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone">
+        </div>
+        <div class="form-group">
+            <label for="contentType">Content Type *</label>
+            <select id="contentType" name="contentType" required>
+                <option value="">Select Content Type</option>
+                <option value="General Articles">General Articles</option>
+                <option value="Short Reports">Short Reports & Communications</option>
+                <option value="Tips and Insights">Tips and Insights</option>
+                <option value="Recent Advancements">Recent Advancements</option>
+                <option value="Creative Contributions">Creative Contributions</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="title">Title of Submission *</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="summary">Brief Summary (250 characters max) *</label>
+            <textarea id="summary" name="summary" maxlength="250" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="file">Upload Your Submission *</label>
+            <input type="file" id="file" name="file" accept=".doc,.docx,.pdf" required>
+        </div>
+        <div class="form-group">
+            <label for="bio">Author Bio (100 words max) *</label>
+            <textarea id="bio" name="bio" maxlength="500" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="comments">Additional Comments</label>
+            <textarea id="comments" name="comments"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Submit</button>
+    </form>
+</div>
+            </div>
+        </div>
+    </main>
+
+     <!-- Footer -->
+   <footer>
+    <div class="footer-top">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-widget">
+                    <div class="footer-logo">
+                        <h2>उदय भारत</h2>
+                        <p>E-Magazine</p>
+                    </div>
+                    <p>Uday Bharat e-Magazine is dedicated to celebrating the spirit of progress, innovation, and the cultural richness of India. More than just a publication, it is a movement that highlights stories that matter, ideas that drive change, and the essence of a nation striving toward its full potential.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/groups/1372117022978461"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/ecofast_agrisolution?igsh=cHJ0OTZsYjI3M3Q5"><i class="fab fa-instagram"></i></a>
+                        <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
+                        <a href="https://www.linkedin.com/company/uday-bharat/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-widget">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Current Issues</a></li>
+                        <li><a href="#">Archives</a></li>
+                        <li><a href="#">Submission Guidelines</a></li>
+                        <li><a href="#">Board Members</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Agriculture</a></li>
+                        <li><a href="#">Science & Technology</a></li>
+                        <li><a href="#">Environment</a></li>
+                        <li><a href="#">Health & Nutrition</a></li>
+                        <li><a href="#">Community Upliftment</a></li>
+                        <li><a href="#">Social Issues</a></li>
+                        <!-- <li><a href="#">Health</a></li> -->
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Eco Fast Agri Solution Private Limited, Tariyani Chhapra, Seohar, Bihar 843329</li>
+                        <li><i class="fas fa-phone"></i> +91-8958123233</li>
+                        <li><i class="fas fa-envelope"></i>  editor@udaybharatmag.in</li>
+                    </ul>
+                    <div class="download-apps">
+                        <h4>Download Our App</h4>
+                        <div class="app-buttons">
+                            <a href="#" class="app-btn">
+                                <i class="fab fa-google-play"></i>
+                                <span>Google Play</span>
+                            </a>
+                            <a href="#" class="app-btn">
+                                <i class="fab fa-apple"></i>
+                                <span>App Store</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 Uday Bharat Magazine. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const submissionForm = document.getElementById('submissionForm');
+        
+        if (submissionForm) {
+            submissionForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData();
+                formData.append('name', document.getElementById('name').value);
+                formData.append('email', document.getElementById('email').value);
+                formData.append('phone', document.getElementById('phone').value);
+                formData.append('contentType', document.getElementById('contentType').value);
+                formData.append('title', document.getElementById('title').value);
+                formData.append('summary', document.getElementById('summary').value);
+                formData.append('bio', document.getElementById('bio').value);
+                formData.append('comments', document.getElementById('comments').value);
+                formData.append('file', document.getElementById('file').files[0]);
+                
+                try {
+                    const response = await fetch('/api/submissions', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (response.ok) {
+                        alert(data.message);
+                        submissionForm.reset();
+                    } else {
+                        alert('Failed to submit: ' + (data.error || 'Please try again later.'));
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again later.');
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>

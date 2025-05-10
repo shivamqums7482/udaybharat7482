@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Uday Bharat Magazine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-page">
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>उदय भारत</h2>
+                <p>Admin Panel</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="articles.html"><i class="fas fa-newspaper"></i> Articles</a>
+                    </li>
+                    <li>
+                        <a href="categories.html"><i class="fas fa-tags"></i> Categories</a>
+                    </li>
+                    <li>
+                        <a href="images.html"><i class="fas fa-images"></i> Images</a>
+                    </li>
+                    <li>
+                        <a href="pdfs.html"><i class="fas fa-file-pdf"></i> PDF Files</a>
+                    </li>
+                    <li>
+                        <a href="users.html"><i class="fas fa-users"></i> Users</a>
+                    </li>
+                    <li>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="../index.html" target="_blank"><i class="fas fa-external-link-alt"></i> View Site</a>
+                <a href="index.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-left">
+                    <button class="toggle-sidebar"><i class="fas fa-bars"></i></button>
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="admin-profile">
+                        <img src="/placeholder.svg?height=40&width=40" alt="Admin" class="profile-img">
+                        <span>Admin User</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #FF9933;">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Total Articles</h3>
+                            <p class="stat-number">248</p>
+                            <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 12% from last month</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #138808;">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Page Views</h3>
+                            <p class="stat-number">45,289</p>
+                            <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 8% from last month</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #0000FF;">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Subscribers</h3>
+                            <p class="stat-number">5,842</p>
+                            <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 5% from last month</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #FF5733;">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>PDF Downloads</h3>
+                            <p class="stat-number">1,256</p>
+                            <p class="stat-change negative"><i class="fas fa-arrow-down"></i> 3% from last month</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2>Recent Activity</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon" style="background-color: #FF9933;">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>New Article Published</h4>
+                                <p>PM Modi inaugurates new Parliament building</p>
+                                <span class="activity-time">2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon" style="background-color: #138808;">
+                                <i class="fas fa-upload"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>PDF Uploaded</h4>
+                                <p>Monthly Magazine - May 2025 Edition</p>
+                                <span class="activity-time">5 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon" style="background-color: #0000FF;">
+                                <i class="fas fa-image"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>Images Uploaded</h4>
+                                <p>12 new images added to gallery</p>
+                                <span class="activity-time">Yesterday</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon" style="background-color: #FF5733;">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>Article Updated</h4>
+                                <p>Indian economy shows strong recovery</p>
+                                <span class="activity-time">Yesterday</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions & Draft Articles -->
+                <div class="two-column-grid">
+                    <div class="content-section">
+                        <div class="section-header">
+                            <h2>Quick Actions</h2>
+                        </div>
+                        <div class="quick-actions">
+                            <a href="articles.html?new=true" class="action-card">
+                                <i class="fas fa-plus-circle"></i>
+                                <span>New Article</span>
+                            </a>
+                            <a href="images.html?upload=true" class="action-card">
+                                <i class="fas fa-upload"></i>
+                                <span>Upload Images</span>
+                            </a>
+                            <a href="pdfs.html?upload=true" class="action-card">
+                                <i class="fas fa-file-upload"></i>
+                                <span>Upload PDF</span>
+                            </a>
+                            <a href="categories.html?new=true" class="action-card">
+                                <i class="fas fa-folder-plus"></i>
+                                <span>New Category</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="content-section">
+                        <div class="section-header">
+                            <h2>Draft Articles</h2>
+                            <a href="articles.html?status=draft" class="view-all">View All</a>
+                        </div>
+                        <div class="draft-list">
+                            <div class="draft-item">
+                                <h4>India's Space Program: Future Missions</h4>
+                                <div class="draft-meta">
+                                    <span><i class="fas fa-user"></i> By Admin</span>
+                                    <span><i class="fas fa-clock"></i> Last edited: 3 hours ago</span>
+                                </div>
+                                <div class="draft-actions">
+                                    <a href="#" class="btn-sm btn-edit"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="#" class="btn-sm btn-publish"><i class="fas fa-check"></i> Publish</a>
+                                </div>
+                            </div>
+                            <div class="draft-item">
+                                <h4>Analysis: Budget 2025 Impact on Middle Class</h4>
+                                <div class="draft-meta">
+                                    <span><i class="fas fa-user"></i> By Editor</span>
+                                    <span><i class="fas fa-clock"></i> Last edited: Yesterday</span>
+                                </div>
+                                <div class="draft-actions">
+                                    <a href="#" class="btn-sm btn-edit"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="#" class="btn-sm btn-publish"><i class="fas fa-check"></i> Publish</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

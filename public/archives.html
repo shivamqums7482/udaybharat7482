@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archives - Uday Bharat Magazine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles specific to Archives page */
+        .page-header {
+            background-color: #f9f9f9;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
+            font-size: 36px;
+            color: #FF9933;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            font-size: 18px;
+        }
+        
+        .archive-filters {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .filter-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .filter-group label {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .filter-group select,
+        .filter-group input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .filter-actions {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: #FF9933;
+            color: #fff;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e88a2a;
+        }
+        
+        .btn-outline {
+            border: 1px solid #ddd;
+            background-color: transparent;
+            color: #666;
+        }
+        
+        .btn-outline:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .archive-years {
+            margin-bottom: 40px;
+        }
+        
+        .year-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .year-tab {
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .year-tab.active {
+            background-color: #FF9933;
+            color: #fff;
+        }
+        
+        .year-tab:hover:not(.active) {
+            background-color: #e0e0e0;
+        }
+        
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+        }
+        
+        .archive-card {
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .archive-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .archive-cover {
+            position: relative;
+        }
+        
+        .archive-cover img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .archive-content {
+            padding: 15px;
+        }
+        
+        .archive-content h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .archive-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .archive-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .archive-actions a {
+            flex: 1;
+            padding: 8px 0;
+            text-align: center;
+            border-radius: 3px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .archive-actions a.read {
+            background-color: #FF9933;
+            color: #fff;
+        }
+        
+        .archive-actions a.download {
+            border: 1px solid #FF9933;
+            color: #FF9933;
+        }
+        
+        .archive-actions a.read:hover {
+            background-color: #e88a2a;
+        }
+        
+        .archive-actions a.download:hover {
+            background-color: #fff3e9;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 40px;
+        }
+        
+        .page-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .page-item.active {
+            background-color: #FF9933;
+            color: #fff;
+        }
+        
+        .page-item:hover:not(.active) {
+            background-color: #e0e0e0;
+        }
+        
+        @media (max-width: 768px) {
+            .filter-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .year-tabs {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <span><i class="fas fa-calendar-alt"></i> Monday, May 4, 2025</span>
+                <span><i class="fas fa-map-marker-alt"></i> New Delhi, India</span>
+            </div>
+            <div class="top-right">
+                <a href="https://www.facebook.com/groups/1372117022978461"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/ecofast_agrisolution?igsh=cHJ0OTZsYjI3M3Q5"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/uday-bharat/"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>UDAY BHARAT</h1>
+                <p>E-Magazine</p>
+            </div>
+            <div class="ad-space">
+                <div class="ad-placeholder">Advertisement Space</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about-us.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="current-issues.html"><i class="fas fa-newspaper"></i> Current Issues</a></li>
+                <li><a href="archives.html" class="active"><i class="fas fa-archive"></i> Archives</a></li>
+                <li><a href="submission-guidelines.html"><i class="fas fa-file-alt"></i> Submission Guidelines</a></li>
+                <li><a href="board-members.html"><i class="fas fa-users"></i> Board Members</a></li>
+                <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            </ul>
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Form -->
+    <div class="search-form">
+        <div class="container">
+            <form>
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="container">
+                <h1>Archives</h1>
+                <h2>Volume-1, Issue-1, October 2024</h2>
+                <p>Explore our complete collection of past issues dating back to our founding in 2024.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Archive Filters -->
+            <div class="archive-filters">
+                <form class="filter-form">
+                    <div class="filter-group">
+                        <label for="year">Year</label>
+                        <select id="year">
+                            <option value="">All Years</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <!-- <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="older">2019 & Older</option> -->
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="month">Month</label>
+                        <select id="month">
+                            <option value="">All Months</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="category">Category</label>
+                        <select id="category">
+                            <option value="">All Categories</option>
+                            <option value="politics">Agriculture</option>
+                            <option value="economy">Science & Technology</option>
+                            <option value="culture">Environment</option>
+                            <option value="technology">Health & Nutrition</option>
+                            <option value="special">Community Upliftment</option>
+                            <option value="special">Social Issues</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="keyword">Keyword</label>
+                        <input type="text" id="keyword" placeholder="Search in archives...">
+                    </div>
+                    <div class="filter-actions">
+                        <button type="submit" class="btn btn-primary">Apply Filters</button>
+                        <button type="reset" class="btn btn-outline">Reset</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Archive Years Tabs -->
+            <div class="archive-years">
+                <div class="year-tabs">
+                    <div class="year-tab active">2025</div>
+                    <div class="year-tab">2024</div>
+                    <!-- <div class="year-tab">2023</div>
+                    <div class="year-tab">2022</div>
+                    <div class="year-tab">2021</div>
+                    <div class="year-tab">2020</div>
+                    <div class="year-tab">2019</div>
+                    <div class="year-tab">2018</div>
+                    <div class="year-tab">2017</div>
+                    <div class="year-tab">2016</div>
+                    <div class="year-tab">2015</div>
+                    <div class="year-tab">2010-2014</div> -->
+                </div>
+            </div>
+
+            <!-- Archive Grid -->
+            <div class="archive-grid">
+                <!-- Archive Items for 2025 -->
+                <div class="archive-card">
+                    <div class="archive-cover">
+                        <img src="img/h1.jpg" alt="May 2025 Issue">
+                    </div>
+                    <div class="archive-content">
+                        <h3>Sustainable Agriculture: Pathways to Resilience</h3>
+                        <div class="archive-meta">
+                            <span>Ozair Alam</span>
+                            <span>01 Pages</span>
+                        </div>
+                        <div class="archive-actions">
+                            <a href="img/vol1issue1/Sustainable Agriculture-Pathways to Resilience.pdf" class="read">Read</a>
+                            <a href="img/vol1issue1/Sustainable Agriculture-Pathways to Resilience.pdf" class="download">Download</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="archive-card">
+                    <div class="archive-cover">
+                        <img src="img/p1.jpg" alt="April 2025 Issue">
+                    </div>
+                    <div class="archive-content">
+                        <h3>Role of Technology in Transforming Indian Agriculture</h3>
+                        <div class="archive-meta">
+                            <span>Ozair Alam</span>
+                            <span>01 Pages</span>
+                        </div>
+                        <div class="archive-actions">
+                            <a href="img/vol1issue1/Role of Technology in Transforming Indian Agriculture.pdf" class="read">Read</a>
+                            <a href="img/vol1issue1/Role of Technology in Transforming Indian Agriculture.pdf" class="download">Download</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="archive-card">
+                    <div class="archive-cover">
+                        <img src="/placeholder.svg?height=300&width=220" alt="March 2025 Issue">
+                    </div>
+                    <div class="archive-content">
+                        <h3>Organic Farming- A Path to Healthier Futures</h3>
+                        <div class="archive-meta">
+                            <span>Ozair Alam</span>
+                            <span>01 Pages</span>
+                        </div>
+                        <div class="archive-actions">
+                            <a href="img/vol1issue1/Organic Farming- A Path to Healthier Futures.pdf" class="read">Read</a>
+                            <a href="img/vol1issue1/Organic Farming- A Path to Healthier Futures.pdf" class="download">Download</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="archive-card">
+                    <div class="archive-cover">
+                        <img src="/placeholder.svg?height=300&width=220" alt="February 2025 Issue">
+                    </div>
+                    <div class="archive-content">
+                        <h3>Climate Change and its Impact on Agriculture</h3>
+                        <div class="archive-meta">
+                            <span>Ozair Alam</span>
+                            <span>01 Pages</span>
+                        </div>
+                        <div class="archive-actions">
+                            <a href="img/vol1issue1/Climate Change and its Impact on Agriculture.pdf" class="read">Read</a>
+                            <a href="img/vol1issue1/Climate Change and its Impact on Agriculture.pdf" class="download">Download</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="archive-card">
+                    <div class="archive-cover">
+                        <img src="/placeholder.svg?height=300&width=220" alt="January 2025 Issue">
+                    </div>
+                    <div class="archive-content">
+                        <h3>Women in Agriculture-Unsung Heroes of Food Security</h3>
+                        <div class="archive-meta">
+                            <span>Ozair Alam</span>
+                            <span>01 Pages</span>
+                        </div>
+                        <div class="archive-actions">
+                            <a href="img/vol1issue1/Women in Agriculture-Unsung Heroes of Food Security.pdf" class="read">Read</a>
+                            <a href="img/vol1issue1/Women in Agriculture-Unsung Heroes of Food Security.pdf" class="download">Download</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="archive-card">
+                    <div class="archive-cover">
+                        <img src="/placeholder.svg?height=300&width=220" alt="Special Edition 2025">
+                    </div>
+                    <div class="archive-content">
+                        <h3>Future of Indian Agriculture- Opportunities and Challenges</h3>
+                        <div class="archive-meta">
+                            <span>Ozair Alam</span>
+                            <span>01 Pages</span>
+                        </div>
+                        <div class="archive-actions">
+                            <a href="img/vol1issue1/Future of Indian Agriculture- Opportunities and Challenges.pdf" class="read">Read</a>
+                            <a href="img/vol1issue1/Future of Indian Agriculture- Opportunities and Challenges.pdf" class="download">Download</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="archive-card">
+                    <div class="archive-cover">
+                        <img src="/placeholder.svg?height=300&width=220" alt="Special Edition 2025">
+                    </div>
+                    <div class="archive-content">
+                        <h3>Organic Fertilizers: A Pathway to Sustainable Agriculture</h3>
+                        <div class="archive-meta">
+                            <span>Kh. Akash</span>
+                            <span>01 Pages</span>
+                        </div>
+                        <div class="archive-actions">
+                            <a href="img/vol1issue1/Organic Fertilizers- A Pathway to Sustainable Agriculture.pdf" class="read">Read</a>
+                            <a href="img/vol1issue1/Organic Fertilizers- A Pathway to Sustainable Agriculture.pdf" class="download">Download</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="archive-card">
+                    <div class="archive-cover">
+                        <img src="/placeholder.svg?height=300&width=220" alt="Special Edition 2025">
+                    </div>
+                    <div class="archive-content">
+                        <h3>The Importance of Agricultural Mechanization for Modern Farming</h3>
+                        <div class="archive-meta">
+                            <span>Dr. Kulkarni</span>
+                            <span>01 Pages</span>
+                        </div>
+                        <div class="archive-actions">
+                            <a href="img/vol1issue1/The Importance of Agricultural Mechanization for Modern Farming.pdf" class="read">Read</a>
+                            <a href="img/vol1issue1/The Importance of Agricultural Mechanization for Modern Farming.pdf" class="download">Download</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="archive-card">
+                    <div class="archive-cover">
+                        <img src="/placeholder.svg?height=300&width=220" alt="Special Edition 2025">
+                    </div>
+                    <div class="archive-content">
+                        <h3>The Rise of Hydroponics: Farming Without Soil</h3>
+                        <div class="archive-meta">
+                            <span>Dr. K. Sinha</span>
+                            <span>01 Pages</span>
+                        </div>
+                        <div class="archive-actions">
+                            <a href="img/vol1issue1/The Rise of Hydroponics- Farming Without Soil.pdf" class="read">Read</a>
+                            <a href="img/vol1issue1/The Rise of Hydroponics- Farming Without Soil.pdf" class="download">Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <div class="page-item"><i class="fas fa-chevron-left"></i></div>
+                <div class="page-item active">1</div>
+                <div class="page-item">2</div>
+                <div class="page-item">3</div>
+                <div class="page-item">4</div>
+                <div class="page-item">5</div>
+                <div class="page-item">...</div>
+                <div class="page-item">20</div>
+                <div class="page-item"><i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+    </main>
+
+     <!-- Footer -->
+   <footer>
+    <div class="footer-top">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-widget">
+                    <div class="footer-logo">
+                        <h2>उदय भारत</h2>
+                        <p>E-Magazine</p>
+                    </div>
+                    <p>Uday Bharat e-Magazine is dedicated to celebrating the spirit of progress, innovation, and the cultural richness of India. More than just a publication, it is a movement that highlights stories that matter, ideas that drive change, and the essence of a nation striving toward its full potential.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/groups/1372117022978461"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/ecofast_agrisolution?igsh=cHJ0OTZsYjI3M3Q5"><i class="fab fa-instagram"></i></a>
+                        <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
+                        <a href="https://www.linkedin.com/company/uday-bharat/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-widget">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Current Issues</a></li>
+                        <li><a href="#">Archives</a></li>
+                        <li><a href="#">Submission Guidelines</a></li>
+                        <li><a href="#">Board Members</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Agriculture</a></li>
+                        <li><a href="#">Science & Technology</a></li>
+                        <li><a href="#">Environment</a></li>
+                        <li><a href="#">Health & Nutrition</a></li>
+                        <li><a href="#">Community Upliftment</a></li>
+                        <li><a href="#">Social Issues</a></li>
+                        <!-- <li><a href="#">Health</a></li> -->
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Eco Fast Agri Solution Private Limited, Tariyani Chhapra, Seohar, Bihar 843329</li>
+                        <li><i class="fas fa-phone"></i> +91-8958123233</li>
+                        <li><i class="fas fa-envelope"></i>  editor@udaybharatmag.in</li>
+                    </ul>
+                    <div class="download-apps">
+                        <h4>Download Our App</h4>
+                        <div class="app-buttons">
+                            <a href="#" class="app-btn">
+                                <i class="fab fa-google-play"></i>
+                                <span>Google Play</span>
+                            </a>
+                            <a href="#" class="app-btn">
+                                <i class="fab fa-apple"></i>
+                                <span>App Store</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 Uday Bharat Magazine. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Archive page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Year tabs functionality
+            const yearTabs = document.querySelectorAll('.year-tab');
+            
+            yearTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    yearTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // In a real implementation, this would load the issues for the selected year
+                    // For demo purposes, we'll just show an alert
+                    alert('Loading issues for ' + this.textContent);
+                });
+            });
+            
+            // Pagination functionality
+            const pageItems = document.querySelectorAll('.page-item');
+            
+            pageItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    if (this.textContent === '...' || this.innerHTML.includes('fas fa-chevron')) {
+                        return;
+                    }
+                    
+                    // Remove active class from all page items
+                    pageItems.forEach(p => p.classList.remove('active'));
+                    
+                    // Add active class to clicked page item
+                    this.classList.add('active');
+                    
+                    // In a real implementation, this would load the issues for the selected page
+                });
+            });
+        });
+    </script>
+</body>
+</html>

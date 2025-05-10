@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Uday Bharat Magazine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles specific to About Us page */
+        .about-hero {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .about-hero h1 {
+            font-size: 36px;
+            color: #FF9933;
+            margin-bottom: 15px;
+        }
+        
+        .about-hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            font-size: 18px;
+        }
+        
+        .about-section {
+            margin-bottom: 50px;
+        }
+        
+        .about-section h2 {
+            font-size: 28px;
+            color: #138808;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .about-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #FF9933;
+        }
+        
+        .about-section p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .about-card {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .about-card i {
+            font-size: 48px;
+            color: #FF9933;
+            margin-bottom: 20px;
+        }
+        
+        .about-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: #eee;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-content {
+            position: relative;
+            width: 45%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+        
+        .timeline-date {
+            position: absolute;
+            top: 0;
+            width: 120px;
+            padding: 8px 0;
+            background-color: #FF9933;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-date {
+            left: -140px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-date {
+            right: -140px;
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: #138808;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+            
+            .timeline-date {
+                width: auto;
+                padding: 5px 10px;
+                top: -30px;
+                left: 0 !important;
+                right: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <span><i class="fas fa-calendar-alt"></i> Monday, May 4, 2025</span>
+                <span><i class="fas fa-map-marker-alt"></i> New Delhi, India</span>
+            </div>
+            <div class="top-right">
+                <a href="https://www.facebook.com/groups/1372117022978461"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/ecofast_agrisolution?igsh=cHJ0OTZsYjI3M3Q5"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/uday-bharat/"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>UDAY BHARAT</h1>
+                <p>E-Magazine</p>
+            </div>
+            <div class="ad-space">
+                <div class="ad-placeholder">Advertisement Space</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about-us.html" class="active"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="current-issues.html"><i class="fas fa-newspaper"></i> Current Issues</a></li>
+                <li><a href="archives.html"><i class="fas fa-archive"></i> Archives</a></li>
+                <li><a href="submission-guidelines.html"><i class="fas fa-file-alt"></i> Submission Guidelines</a></li>
+                <li><a href="board-members.html"><i class="fas fa-users"></i> Board Members</a></li>
+                <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            </ul>
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Form -->
+    <div class="search-form">
+        <div class="container">
+            <form>
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Hero Section -->
+        <div class="about-hero">
+            <div class="container">
+                <h1>About Uday Bharat Magazine</h1>
+                <p>Dedicated to showcasing the rise of India through insightful journalism, cultural exploration, and thought-provoking analysis.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Our Story Section -->
+            <div class="about-section">
+                <h2>Our Story</h2>
+                <p>Uday Bharat Magazine is a newly launched platform dedicated to advancing knowledge and innovation in Agriculture, Forestry, and Environmental Science. We aim to provide a high-quality publication medium for researchers, academicians, professionals, and farmers to share groundbreaking studies, advancements, and practical solutions in these fields.</p>
+                <p>Our magazine serves as a bridge between researchers, industry professionals, and practitioners by encouraging the dissemination of innovative ideas, research findings, and technical know-how. We promote sustainable practices, emerging technologies, and impactful contributions in agriculture and related sciences.</p>
+                <p>Today, Uday Bharat reaches millions of readers across India and the global Indian diaspora through our print magazine, digital platform, and social media channels. We continue to grow while staying true to our founding principles of integrity, independence, and insightful journalism.</p>
+            </div>
+
+            <!-- Our Mission Section -->
+            <div class="about-section">
+                <h2>Our Mission</h2>
+                <p>At Uday Bharat Magazine, our mission is to provide accurate, insightful, and balanced coverage of India's evolving narrative. We aim to:</p>
+                <div class="about-grid">
+                    <div class="about-card">
+                        <i class="fas fa-newspaper"></i>
+                        <h3>Inform</h3>
+                        <p>Deliver factual, well-researched news and analysis that helps readers understand complex issues affecting India and the world.</p>
+                    </div>
+                    <div class="about-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Inspire</h3>
+                        <p>Highlight stories of innovation, resilience, and achievement that showcase India's potential and progress.</p>
+                    </div>
+                    <div class="about-card">
+                        <i class="fas fa-comments"></i>
+                        <h3>Engage</h3>
+                        <p>Foster meaningful dialogue on important issues and provide a platform for diverse perspectives and voices.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Our Journey Section -->
+            <div class="about-section">
+                <h2>Our Journey</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024</div>
+                            <h3>The Beginning</h3>
+                            <p>Uday Bharat Magazine was founded as a quarterly print publication focused on India's economic reforms and growth story.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024</div>
+                            <h3>Digital Expansion</h3>
+                            <p>Launched our website and digital edition, expanding our reach to readers across the globe.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024</div>
+                            <h3>Bi-Monthly Publication</h3>
+                            <p>Transitioned to a Bi-monthly (every 2 months) publication schedule due to growing readership and expanded our coverage to include culture, technology, and social issues.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024</div>
+                            <h3>Subject Focus</h3>
+                            <p>Applied Sciences</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024</div>
+                            <h3>Format</h3>
+                            <p>Online</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024</div>
+                            <h3>Language</h3>
+                            <p>English</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024</div>
+                            <h3>Multimedia Platform</h3>
+                            <p>Expanded into podcasts, video documentaries, and interactive digital storytelling.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2025</div>
+                            <h3>Award Recognition</h3>
+                            <p>Received national recognition for our investigative journalism and coverage of rural development initiatives.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2025</div>
+                            <h3>Today</h3>
+                            <p>Continuing to evolve and adapt to the changing media landscape while maintaining our commitment to quality journalism.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Our Values Section -->
+            <div class="about-section">
+                <h2>Our Values</h2>
+                <div class="about-grid">
+                    <div class="about-card">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3>Integrity</h3>
+                        <p>We uphold the highest standards of journalistic ethics and transparency in our reporting.</p>
+                    </div>
+                    <div class="about-card">
+                        <i class="fas fa-search"></i>
+                        <h3>Accuracy</h3>
+                        <p>We are committed to factual reporting and thorough research in all our content.</p>
+                    </div>
+                    <div class="about-card">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Independence</h3>
+                        <p>We maintain editorial independence and present diverse perspectives without bias.</p>
+                    </div>
+                    <div class="about-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Inclusivity</h3>
+                        <p>We strive to represent the diverse voices and experiences that make up India's rich tapestry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-widget">
+                        <div class="footer-logo">
+                            <h2>उदय भारत</h2>
+                            <p>E-Magazine</p>
+                        </div>
+                        <p>Uday Bharat e-Magazine is dedicated to celebrating the spirit of progress, innovation, and the cultural richness of India. More than just a publication, it is a movement that highlights stories that matter, ideas that drive change, and the essence of a nation striving toward its full potential.</p>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/groups/1372117022978461"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/ecofast_agrisolution?igsh=cHJ0OTZsYjI3M3Q5"><i class="fab fa-instagram"></i></a>
+                            <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
+                            <a href="https://www.linkedin.com/company/uday-bharat/"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about-us.html">About Us</a></li>
+                            <li><a href="current-issues.html">Current Issues</a></li>
+                            <li><a href="archives.html">Archives</a></li>
+                            <li><a href="submission-guidelines.html">Submission Guidelines</a></li>
+                            <li><a href="board-members.html">Board Members</a></li>
+                            <!-- <li><a href="faq.html">FAQ</a></li> -->
+                            <li><a href="contact-us.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Categories</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Agriculture</a></li>
+                            <li><a href="#">Science & Technology</a></li>
+                            <li><a href="#">Environment</a></li>
+                            <li><a href="#">Health & Nutrition</a></li>
+                            <li><a href="#">Community Upliftment</a></li>
+                            <li><a href="#">Social Issues</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Contact Info</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> Eco Fast Agri Solution Private Limited, Tariyani Chhapra, Seohar, Bihar 843329</li>
+                            <li><i class="fas fa-phone"></i> +91-8958123233</li>
+                            <li><i class="fas fa-envelope"></i> editor@udaybharatmag.in</li>
+                        </ul>
+                        <div class="download-apps">
+                            <h4>Download Our App</h4>
+                            <div class="app-buttons">
+                                <a href="#" class="app-btn">
+                                    <i class="fab fa-google-play"></i>
+                                    <span>Google Play</span>
+                                </a>
+                                <a href="#" class="app-btn">
+                                    <i class="fab fa-apple"></i>
+                                    <span>App Store</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 Uday Bharat Magazine. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
