@@ -2,6 +2,9 @@
   "name": "uday-bharat-backend",
   "version": "1.0.0",
   "description": "Backend for Uday Bharat Magazine",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
   "main": "server.js",
   "scripts": {
     "build": "mkdir -p dist && cp server.js dist/",
