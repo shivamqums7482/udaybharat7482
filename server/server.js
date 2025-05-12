@@ -9,7 +9,7 @@ const app = express();
 
 // 3. Configure middleware (IN THIS ORDER)
 app.use(cors({
-  origin: 'http://127.0.0.1:5500', // ✅ Removed trailing slash
+  origin: 'https://udaybharat7482.onrender.com', // ✅ Removed trailing slash
   credentials: true
 }));
 app.use(express.json());
