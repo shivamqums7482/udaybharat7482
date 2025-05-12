@@ -4,8 +4,8 @@ const Contact = require('../models/Contact'); // Import the Contact model
 
 // POST route to save contact form data
 router.post('/', async (req, res) => {
-    // const name = req.body.name;
-    // res.send(name);
+    const name = req.body.name;
+    res.send(name);
     try {
         // Destructure the incoming request body
         const { name, email, phone, subject, message } = req.body;
