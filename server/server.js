@@ -30,6 +30,11 @@ const submissionRoutes = require('./routes/submission');
 app.use('/api/contact', contactRoutes);
 app.use('/api/submissions', submissionRoutes);
 
+//Test
+app.use("/hello",(req, res)=>{
+  res.send("Hello from server")
+})
+
 // 6. Static files (AFTER routes)
 app.use(express.static(path.join(__dirname, 'public'))); // ✅ Use correct relative path
 
