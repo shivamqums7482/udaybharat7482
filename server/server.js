@@ -31,7 +31,7 @@ app.use('/api/contact', contactRoutes);
 app.use('/api/submissions', submissionRoutes);
 
 //Test
-app.use("/hello",(req, res)=>{
+app.get("/hello",(req, res)=>{
   res.send("Hello from server")
 })
 
