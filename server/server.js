@@ -7,6 +7,12 @@ const path = require('path');
 // 2. Create express app
 const app = express();
 
+// To keep the server alive
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
+
 // 3. Configure middleware (IN THIS ORDER)
 app.use(cors({
   origin: 'https://udaybharatmag.in', // ✅ Removed trailing slash
