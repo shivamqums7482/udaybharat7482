@@ -39,6 +39,7 @@ const upload = multer({ storage });
 
 // Submit article
 router.post('/', upload.single('file'), async (req, res) => {
+  res.send("Hello from submission");
   try {
     const { name, email, phone, contentType, title, summary, bio, comments } = req.body;
     const filePath = req.file ? req.file.path : null;
