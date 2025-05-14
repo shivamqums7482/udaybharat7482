@@ -3,6 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
+require('dotenv').config();
+
 
 // 2. Create express app
 const app = express();
@@ -16,6 +18,7 @@ app.get('/health', (req, res) => {
 // 3. Configure middleware (IN THIS ORDER)
 app.use(cors({
   origin: 'https://udaybharatmag.in', // ✅ Removed trailing slash
+  // origin: 'http://192.168.31.151:5500', // ✅ Removed trailing slash
   credentials: true
 }));
 app.use(express.json());
@@ -52,4 +55,4 @@ app.use((err, req, res, next) => {
 
 // 8. Start server (LAST)
 const PORT = process.env.PORT || 5002;
-app.listen(PORT);
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

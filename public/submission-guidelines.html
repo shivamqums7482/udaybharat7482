@@ -584,27 +584,18 @@
                 submissionForm.addEventListener('submit', async function (e) {
                     e.preventDefault();
 
-                    const formData = new FormData();
-                    formData.append('name', document.getElementById('name').value);
-                    formData.append('email', document.getElementById('email').value);
-                    formData.append('phone', document.getElementById('phone').value);
-                    formData.append('contentType', document.getElementById('contentType').value);
-                    formData.append('title', document.getElementById('title').value);
-                    formData.append('summary', document.getElementById('summary').value);
-                    formData.append('bio', document.getElementById('bio').value);
-                    formData.append('comments', document.getElementById('comments').value);
-                    formData.append('file', document.getElementById('file').files[0]);
+                    const formData = new FormData(submissionForm); // more concise than appending each field manually
 
                     try {
                         const response = await fetch('https://udaybharat7482.onrender.com/api/submissions', {
                             method: 'POST',
-                            body: formData
+                            body: formData,
                         });
 
                         const data = await response.json();
 
                         if (response.ok) {
-                            alert(data.message);
+                            alert(data.message || 'Submission successful.');
                             submissionForm.reset();
                         } else {
                             alert('Failed to submit: ' + (data.error || 'Please try again later.'));
@@ -617,6 +608,7 @@
             }
         });
     </script>
+
 
 </body>
 
