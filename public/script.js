@@ -221,7 +221,7 @@ searchIcon.addEventListener('click', function() {
             }
             
             // In a real implementation, this would send the email to a server
-            alert('Thank you for subscribing to our newsletter!');
+            // alert('Thank you for subscribing to our newsletter!');
             emailInput.value = '';
         });
     }
