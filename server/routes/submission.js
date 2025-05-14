@@ -4,38 +4,49 @@ const multer = require('multer');
 const path = require('path');
 const Submission = require('../models/Submission');
 const nodemailer = require('nodemailer');
+const {cloudinary,storage} = require('../config/cloudinaryConfig');
 
 // Configure multer for file uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/');
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
-  }
-});
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, 'uploads/');
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, `${Date.now()}-${file.originalname}`);
+//   }
+// });
 
-const upload = multer({ 
-  storage: storage,
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
-  fileFilter: (req, file, cb) => {
-    const filetypes = /doc|docx|pdf/;
-const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-const mimetype = filetypes.test(file.mimetype);
+// const upload = multer({ 
+//   storage: storage,
+//   limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
+//   fileFilter: (req, file, cb) => {
+//     const filetypes = /doc|docx|pdf/;
+// const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+// const mimetype = filetypes.test(file.mimetype);
     
-    if (extname && mimetype) {
-      return cb(null, true);
-    } else {
-      cb('Error: Only .doc, .docx, and .pdf files are allowed!');
-    }
-  }
-});
+//     if (extname && mimetype) {
+//       return cb(null, true);
+//     } else {
+//       cb('Error: Only .doc, .docx, and .pdf files are allowed!');
+//     }
+//   }
+// });
+
+
+// cloudinary based storage
+const upload = multer({ storage });
 
 // Submit article
 router.post('/', upload.single('file'), async (req, res) => {
   try {
     const { name, email, phone, contentType, title, summary, bio, comments } = req.body;
     const filePath = req.file ? req.file.path : null;
+
+    
+
+    if (!filePath || !filePath.path) {
+      return res.status(400).json({ message: "File upload failed" });
+    }
     
     const newSubmission = new Submission({
       name,
@@ -44,7 +55,8 @@ router.post('/', upload.single('file'), async (req, res) => {
       contentType,
       title,
       summary,
-      filePath,
+      fileUrl: filePath.path, // Cloudinary secure_url
+      publicId: filePath.filename, // If needed for delete later
       bio,
       comments
     });
