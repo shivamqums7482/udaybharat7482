@@ -4,7 +4,7 @@ const multer = require('multer');
 const path = require('path');
 const Submission = require('../models/Submission');
 const nodemailer = require('nodemailer');
-const {cloudinary,storage} = require('../config/cloudinaryConfig');
+const {cloudinary,storage} = require('../config/cloudinary');
 
 // Configure multer for file uploads
 // const storage = multer.diskStorage({
@@ -31,6 +31,7 @@ const {cloudinary,storage} = require('../config/cloudinaryConfig');
 //     }
 //   }
 // });
+
 
 
 // cloudinary based storage
