@@ -45,7 +45,7 @@ app.get('/health', (req, res) => {
 
 //Test
 app.get("/hello",(req, res)=>{
-  res.send("Hello from server")
+  res.status(200).send('Hello from server');
 })
 
 // 6. Static files (AFTER routes)
