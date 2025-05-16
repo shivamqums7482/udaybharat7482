@@ -8,19 +8,25 @@ require('dotenv').config();
 
 // 2. Create express app
 const app = express();
-
-// To keep the server alive
-app.get('/health', (req, res) => {
-  res.status(200).send('OK');
-});
-
-
 // 3. Configure middleware (IN THIS ORDER)
+const allowedOrigins = [
+  "https://udaybharatmag.in",
+  "http://localhost:5500",
+  undefined // allow curl/postman or no-origin requests
+];
+
 app.use(cors({
-  origin: 'https://udaybharatmag.in', // ✅ Removed trailing slash
-  // origin: 'http://127.0.0.1:5500', // ✅ Removed trailing slash
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log("❌ Blocked origin:", origin);
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -33,9 +39,21 @@ mongoose.connect('mongodb+srv://shivamprakash:shivam%409955@udaybharat.dcf5n4y.m
 .catch(err => console.error('❌ MongoDB Connection Error:', err));
 
 // 5. Routes
+
+app.use((req, res, next) => {
+  console.log("🔍 Request Origin:", req.headers.origin);
+  console.log("🔍 IP:", req.ip);
+  next();
+});
+
+
 const contactRoutes = require('./routes/contact');
 const submissionRoutes = require('./routes/submission');
 const newsletterRoutes = require('./routes/newsletter');
+
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
 
 app.use('/api/contact', contactRoutes);
 app.use('/api/submissions', submissionRoutes);
@@ -43,7 +61,7 @@ app.use('/api/newsletter', newsletterRoutes);
 
 //Test
 app.get("/hello",(req, res)=>{
-  res.send("Hello from server")
+  res.send("Hello from server");
 })
 
 // 6. Static files (AFTER routes)
