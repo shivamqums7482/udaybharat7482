@@ -7,7 +7,7 @@ const submissionSchema = new mongoose.Schema({
   contentType: { type: String, required: true },
   title: { type: String, required: true },
   summary: { type: String, required: true },
-  filePath: { type: String },
+  fileUrl: { type: String },
   bio: { type: String, required: true },
   comments: { type: String },
   status: { type: String, default: 'pending' },

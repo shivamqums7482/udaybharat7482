@@ -18,7 +18,7 @@ app.get('/health', (req, res) => {
 // 3. Configure middleware (IN THIS ORDER)
 app.use(cors({
   origin: 'https://udaybharatmag.in', // ✅ Removed trailing slash
-  // origin: 'http://192.168.31.151:5500', // ✅ Removed trailing slash
+  // origin: 'http://127.0.0.1:5500', // ✅ Removed trailing slash
   credentials: true
 }));
 app.use(express.json());
@@ -35,9 +35,11 @@ mongoose.connect('mongodb+srv://shivamprakash:shivam%409955@udaybharat.dcf5n4y.m
 // 5. Routes
 const contactRoutes = require('./routes/contact');
 const submissionRoutes = require('./routes/submission');
+const newsletterRoutes = require('./routes/newsletter');
 
 app.use('/api/contact', contactRoutes);
 app.use('/api/submissions', submissionRoutes);
+app.use('/api/newsletter', newsletterRoutes);
 
 //Test
 app.get("/hello",(req, res)=>{

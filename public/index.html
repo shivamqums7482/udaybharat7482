@@ -434,9 +434,9 @@
                         </div>
                         <div class="subscribe-form">
                             <p>Subscribe to our newsletter to get the latest updates directly in your inbox.</p>
-                            <form action="#">
-                                <input type="email" placeholder="Your Email Address">
-                                <button type="submit">Subscribe</button>
+                            <form id="newsletter">
+                                <input type="email" id="email" placeholder="Your Email Address">
+                                <button type="submit" class="submit">Subscribe</button>
                             </form>
                         </div>
                     </div>
@@ -663,5 +663,42 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <script>
+        document.getElementById('newsletter').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = document.querySelector('.submit');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            try {
+                const response = await fetch('https://udaybharat7482.onrender.com/api/newsletter', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: document.getElementById('email').value,
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) throw new Error(data.message || 'Submission failed');
+
+                alert('Subscribed successfully!');
+                e.target.reset();
+            } catch (error) {
+                console.error('Error:', error);
+                alert(`Error: ${error.message}`);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Subscribe';
+            }
+        });
+
+    </script>
+
 </body>
 </html>
