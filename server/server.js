@@ -10,9 +10,7 @@ require('dotenv').config();
 const app = express();
 
 // To keep the server alive
-app.get('/health', (req, res) => {
-  res.status(200).send('OK');
-});
+
 
 
 // 3. Configure middleware (IN THIS ORDER)
@@ -40,6 +38,10 @@ const newsletterRoutes = require('./routes/newsletter');
 app.use('/api/contact', contactRoutes);
 app.use('/api/submissions', submissionRoutes);
 app.use('/api/newsletter', newsletterRoutes);
+
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
 
 //Test
 app.get("/hello",(req, res)=>{
