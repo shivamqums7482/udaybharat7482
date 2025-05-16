@@ -8,14 +8,6 @@ require('dotenv').config();
 
 // 2. Create express app
 const app = express();
-<<<<<<< HEAD
-=======
-
-// To keep the server alive
-
-
-
->>>>>>> ff93fac8bdea36166ea0456beb959263ecb74b3b
 // 3. Configure middleware (IN THIS ORDER)
 const allowedOrigins = [
   "https://udaybharatmag.in",
@@ -73,11 +65,8 @@ app.get('/health', (req, res) => {
 
 //Test
 app.get("/hello",(req, res)=>{
-<<<<<<< HEAD
   res.send("Hello from server");
-=======
   res.status(200).send('Hello from server');
->>>>>>> ff93fac8bdea36166ea0456beb959263ecb74b3b
 })
 
 // 6. Static files (AFTER routes)
